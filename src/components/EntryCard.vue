@@ -18,6 +18,7 @@ export default {
 <style scoped>
 .entry-card {
   width: 400px;
+  background-color: aqua;
   border: 1px solid grey;
   border-radius: 6px;
   cursor: pointer;
