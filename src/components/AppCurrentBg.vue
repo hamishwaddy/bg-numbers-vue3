@@ -1,5 +1,6 @@
 <template>
-  <div class="bg-number">
+  <div v-if="!entry">Loading...</div>
+  <div v-else-if="currentSgv" class="bg-number">
     <p
       class="bg-value"
       :style="{

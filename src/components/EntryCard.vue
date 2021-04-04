@@ -1,6 +1,5 @@
 <template>
-  <div v-if="!entry">Loading...</div>
-  <div v-else-if="entry" class="entry-card">
+  <div class="entry-card">
     <AppCurrentBg :currentSgv="entry.sgv" />
     <CurrentBgDirection :direction="entry.direction" />
     <AppDate :timestamp="entry.date" />
