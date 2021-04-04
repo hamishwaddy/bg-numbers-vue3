@@ -1,6 +1,9 @@
 <template>
-  <div v-if="!entry">Loading...</div>
-  <div v-else-if="currentSgv" class="bg-number">
+  <div class="bg-number">
+    <div v-if="bgValInMmol() < 4" class="warning">
+      <span>URGENT</span>
+      <fa icon="exclamation-triangle" type="fas" class="icon"></fa>
+    </div>
     <p
       class="bg-value"
       :style="{
@@ -37,10 +40,26 @@ export default {
 
 <style lang="css" scoped>
 .bg-value {
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .bg-unit {
   margin: 0 0 36px;
+}
+
+.warning {
+  align-items: center;
+  background-color: red;
+  border-radius: 0.5rem;
+  color: #fff;
+  display: flex;
+  font-weight: 700;
+  padding: 0.5rem 2rem;
+}
+
+.icon {
+  height: 1rem;
+  margin-left: 10px;
+  width: auto;
 }
 </style>

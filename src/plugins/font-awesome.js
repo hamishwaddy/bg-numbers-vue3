@@ -7,6 +7,7 @@ import {
   faArrowAltCircleRight,
   faArrowAltCircleDown,
   faArrowAltCircleUp,
+  faExclamationTriangle,
 } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import FontAwesomeIcon from '../lib/FontAwesomeIcon.vue'
@@ -20,7 +21,8 @@ library.add(
   faAngleDoubleDown,
   faArrowAltCircleRight,
   faArrowAltCircleDown,
-  faArrowAltCircleUp
+  faArrowAltCircleUp,
+  faExclamationTriangle
 )
 
 export { FontAwesomeIcon }
