@@ -1,10 +1,6 @@
 <template>
   <div class="icon-wrapper">
-    <fa
-      :icon="arrowDirection"
-      type="fas"
-      class="{ direction === 'FortyFiveUp' ? 'forty-five-up' || direction === 'FortyFiveDown' ? 'forty-five-down' : '' }"
-    ></fa>
+    <fa :icon="arrowDirection" type="fas" :class="classObject"></fa>
   </div>
 </template>
 
@@ -21,16 +17,22 @@ export default {
     return {
       icons: [
         { direction: 'Flat', iconString: 'arrows-alt-h' },
-        { direction: 'FortyFiveUp', iconString: 'angle-right' },
-        { direction: 'SingleUp', iconString: 'angle-up' },
+        { direction: 'FortyFiveUp', iconString: 'arrow-alt-circle-right' },
+        { direction: 'SingleUp', iconString: 'arrow-alt-circle-up' },
         { direction: 'DoubleUp', iconString: 'angle-double-up' },
-        { direction: 'FortyFiveDown', iconString: 'angle-right' },
-        { direction: 'SingleDown', iconString: 'angle-down' },
+        { direction: 'FortyFiveDown', iconString: 'arrow-alt-circle-right' },
+        { direction: 'SingleDown', iconString: 'arrow-alt-circle-down' },
         { direction: 'DoubleDown', iconString: 'angle-double-down' },
       ],
     }
   },
   computed: {
+    classObject() {
+      return {
+        'forty-five-up': this.direction === 'FortyFiveUp',
+        'forty-five-down': this.direction === 'FortyFiveDown',
+      }
+    },
     arrowDirection() {
       let iconName
       this.icons.filter((i) => {
