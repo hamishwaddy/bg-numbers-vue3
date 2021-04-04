@@ -5,31 +5,30 @@
 </template>
 
 <script>
-import EntryCard from "@/components/EntryCard.vue";
-import EntryService from "@/services/EntryService.js";
-// import axios from "axios";
+import EntryCard from '@/components/EntryCard.vue'
+import EntryService from '@/services/EntryService.js'
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     EntryCard,
   },
   data() {
     return {
-      latestEntry: null,
-    };
+      latestEntry: {},
+    }
   },
   created() {
     EntryService.getLatestEntry()
       .then(({ data }) => {
-        console.log(data[0]);
-        this.latestEntry = data[0];
+        this.latestEntry = data[0]
+        console.log('latest: ', data[0])
       })
       .catch((error) => {
-        console.log(error);
-      });
+        console.log(error)
+      })
   },
-};
+}
 </script>
 
 <style scoped>

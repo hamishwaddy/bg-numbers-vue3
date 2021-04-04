@@ -1,27 +1,42 @@
 <template>
   <div class="entry-card">
-    <h1>{{ entry.sgv }}</h1>
-    <span>{{ entry.date }}</span>
-    <p>{{ entry.direction }}</p>
+    <AppCurrentBg :currentSgv="entry.sgv" />
+    <CurrentBgDirection :direction="entry.direction" />
+    <AppDate :timestamp="entry.date" />
   </div>
 </template>
 
 <script>
+import AppDate from '@/components/AppDate'
+import AppCurrentBg from '@/components/AppCurrentBg'
+import CurrentBgDirection from '@/components/CurrentBgDirection'
+
 export default {
-  name: "EntryCard",
-  props: {
-    entry: Object,
+  name: 'EntryCard',
+  components: {
+    AppDate,
+    AppCurrentBg,
+    CurrentBgDirection,
   },
-};
+  props: {
+    entry: {
+      type: Object,
+      default: null,
+    },
+  },
+}
 </script>
 
 <style scoped>
 .entry-card {
-  width: 400px;
+  align-items: center;
+  width: 250px;
   background-color: aqua;
   border: 1px solid grey;
   border-radius: 6px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   margin-bottom: 20px;
 }
