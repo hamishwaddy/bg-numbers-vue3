@@ -1,6 +1,5 @@
 <template>
-  <div v-if="!latestEntry">Loading...</div>
-  <div v-else-if="latestEntry" class="entries">
+  <div class="entries">
     <EntryCard :entry="latestEntry" />
   </div>
 </template>
