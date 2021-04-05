@@ -1,9 +1,10 @@
 <template>
   <div v-if="!entry">Loading EntryCard...</div>
   <div v-else class="entry-card">
-    <AppCurrentBg :currentSgv="entry.sgv" />
-    <CurrentBgDirection :direction="entry.direction" />
-    <AppDate :timestamp="entry.date" />
+    {{ entry }}
+    <AppCurrentBg :currentSgv="sgv" />
+    <CurrentBgDirection :direction="direction" />
+    <AppDate :timestamp="date" />
   </div>
 </template>
 
@@ -22,7 +23,20 @@ export default {
   props: {
     entry: {
       type: Object,
-      default: null,
+      default: () => {},
+      required: true,
+    },
+  },
+  computed: {
+    sgv() {
+      console.log(this.entry.sgv / 18)
+      return this.entry.sgv
+    },
+    date() {
+      return this.entry.date
+    },
+    direction() {
+      return this.entry.direction
     },
   },
 }

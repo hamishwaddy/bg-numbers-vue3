@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       icons: [
-        { direction: 'Flat', iconString: 'arrows-alt-h' },
+        { direction: 'Flat', iconString: 'arrow-alt-circle-right' },
         { direction: 'FortyFiveUp', iconString: 'arrow-alt-circle-right' },
         { direction: 'SingleUp', iconString: 'arrow-alt-circle-up' },
         { direction: 'DoubleUp', iconString: 'angle-double-up' },

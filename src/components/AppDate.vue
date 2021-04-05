@@ -1,6 +1,7 @@
 <template>
-  <span :title="humanFriendlyDate()">
-    {{ timeAgo() }}
+  {{ timestamp }}
+  <span :title="humanFriendlyDate">
+    {{ timeAgo }}
   </span>
 </template>
 
@@ -13,12 +14,25 @@ export default {
       type: Number,
     },
   },
-  methods: {
-    timeAgo() {
-      return formatDistanceToNow(this.timestamp, { addSuffix: true })
-    },
+  data() {
+    return {
+      timeAgo: '',
+    }
+  },
+  computed: {
+    // timeAgo() {
+    //   return this.recalculateTimeAgo()
+    // },
     humanFriendlyDate() {
       return format(this.timestamp, 'dd-MMM-yyyy hh:mm:aaa')
+    },
+  },
+  methods: {
+    recalculateTimeAgo() {
+      setInterval(() => {
+        console.log(formatDistanceToNow(this.timestamp, { addSuffix: true }))
+        this.timeAgo = formatDistanceToNow(this.timestamp, { addSuffix: true })
+      }, 10000)
     },
   },
 }

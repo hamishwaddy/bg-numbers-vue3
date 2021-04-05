@@ -19,14 +19,32 @@ export default {
     }
   },
   created() {
-    EntryService.getLatestEntry()
-      .then(({ data }) => {
-        this.latestEntry = data[0]
-        console.log('latest: ', data[0])
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    this.getInitEntry()
+    this.fetchLatestEntryEveryMinute()
+  },
+  methods: {
+    getInitEntry() {
+      EntryService.getLatestEntry()
+        .then(({ data }) => {
+          console.log('init entry: ', data[0])
+          this.latestEntry = data[0]
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    fetchLatestEntryEveryMinute() {
+      setInterval(() => {
+        EntryService.getLatestEntry()
+          .then(({ data }) => {
+            console.log('getting data every minute: ', data[0])
+            this.latestEntry = data[0]
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }, 60000)
+    },
   },
 }
 </script>
