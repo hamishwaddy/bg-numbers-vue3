@@ -15,7 +15,8 @@ export default {
   },
   data() {
     return {
-      latestEntry: {},
+      latestEntry: null,
+      setIntervalId: null,
     }
   },
   created() {
@@ -34,7 +35,7 @@ export default {
         })
     },
     fetchLatestEntryEveryMinute() {
-      setInterval(() => {
+      this.setIntervalId = setInterval(() => {
         EntryService.getLatestEntry()
           .then(({ data }) => {
             console.log('getting data every minute: ', data[0])
@@ -45,6 +46,9 @@ export default {
           })
       }, 60000)
     },
+  },
+  beforeUnmount() {
+    clearInterval(this.setIntervalId)
   },
 }
 </script>
